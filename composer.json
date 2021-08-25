@@ -1,15 +1,20 @@
 {
-  "name": "lee-to/php-tochka-api-v2-sdk",
+  "name": "Vendict/php-tochka-api-v2-sdk",
   "description": "Tochka bank API v2 client for PHP",
   "keywords": ["tochka", "api", "v2"],
   "type": "library",
-  "homepage": "https://github.com/lee-to/php-tochka-api-v2-sdk",
+  "homepage": "https://github.com/Vendict/php-tochka-api-v2-sdk",
   "license": "MIT",
   "authors": [
     {
       "name": "Danil Shutsky",
       "email": "leetodev@ya.ru",
       "homepage": "https://github.com/lee-to"
+    },
+    {
+        "name": "Alexander Mezentsev",
+        "email": "aomezentsev@gmail.com",
+        "homepage": "https://github.com/Vendict"
     }
   ],
   "require": {
