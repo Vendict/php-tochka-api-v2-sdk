@@ -1,5 +1,5 @@
 {
-  "name": "Vendict/php-tochka-api-v2-sdk",
+  "name": "vendict/php-tochka-api-v2-sdk",
   "description": "Tochka bank API v2 client for PHP",
   "keywords": ["tochka", "api", "v2"],
   "type": "library",
