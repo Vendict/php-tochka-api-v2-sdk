@@ -181,7 +181,7 @@ final class Client
      * @param string $jwt
      * @return string
      */
-    public function generateAuthorizeUrl($consent_id,$scope)
+    public function generateAuthorizeUrl($consent_id,$scope,$state)
     {
         $data = [
             "client_id" => $this->getClientId(),
@@ -189,6 +189,7 @@ final class Client
             "consent_id" => $consent_id,
             "scope" => $scope,
             "response_type" => "code",
+            "state" => $state,
         ];
 
         return static::HOST . "/connect/authorize?" . http_build_query($data);
@@ -243,16 +244,19 @@ final class Client
     }
 
     /**
+     *
+     * @param string $state
      * @return string
      * @throws TochkaApiClientException
      */
-    public function authorize()
+    public function authorize($state=null)
     {
         $data = [
             "client_id" => $this->getClientId(),
             "client_secret" => $this->getClientSecret(),
             "grant_type" => "client_credentials",
             "scope" => $this->getScopes(),
+            "state" => $state,
         ];
 
         try {
@@ -262,7 +266,7 @@ final class Client
             throw new TochkaApiClientException($e->getMessage());
         }
 
-        return $this->generateAuthorizeUrl($response['Data']['consentId'],$this->getScopes());
+        return $this->generateAuthorizeUrl($response['Data']['consentId'],$this->getScopes(),$state);
     }
 
     /**
@@ -318,7 +322,7 @@ final class Client
             throw new TochkaApiClientException("Access token error");
         }
 
-        $token = new AccessToken($response["access_token"], $response["expires_in"], (isset($response["refresh_token"]) ? $response["refresh_token"] : ""));
+        $token = new AccessToken($response["access_token"], $response["expires_in"], (isset($response["refresh_token"]) ? $response["refresh_token"] : ""), $response["token_type"]);
 
         return $token;
     }

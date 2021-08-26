@@ -25,18 +25,32 @@ class AccessToken
     protected $expires_in;
 
     /**
+     * @var string $token_type
+     */
+    protected $token_type;
+
+    /**
      * AccessToken constructor.
      * @param string $access_token
      * @param int $expires_in
      * @param string $refresh_token
      */
-    public function __construct($access_token, $expires_in = 7200, $refresh_token = "")
+    public function __construct($access_token, $expires_in = 7200, $refresh_token = "", $token_type)
     {
         $this->setAccessToken($access_token);
         $this->setExpiresIn($expires_in);
         $this->setRefreshToken($refresh_token);
+        $this->setTokenType($token_type);
     }
 
+    public function setTokenType($token_type) {
+        $this->token_type = $token_type;
+    }
+
+
+    public function getTokenType() {
+        return $this->token_type;
+    }
     /**
      * @return string
      */
