@@ -39,18 +39,24 @@ class Api
      */
     protected $bearerAuthHeader = [];
 
+
+    protected $apiUrl = 'uapi';
+
     /**
      * Api constructor.
      * @param AccessToken $token
      * @param HttpClientInterface $adapter
+     * @param string $apiUrl  -- this try use sandbox
      */
-    public function __construct(AccessToken $token, HttpClientInterface $adapter)
+    public function __construct(AccessToken $token, HttpClientInterface $adapter, $apiUrl='uapi')
     {
         $bearerAuth = new BearerAuth($token);
 
         $this->setBearerAuthHeader($bearerAuth->getHeaders());
 
         $this->setAdapter($adapter);
+
+        $this->apiUrl = $apiUrl;
     }
 
     /**
@@ -107,7 +113,7 @@ class Api
      */
     protected function getBaseUrl($type)
     {
-        return static::HOST . "/uapi/" . $type . "/" . static::VERSION;
+        return static::HOST . "/".$this->apiUrl."/" . $type . "/" . static::VERSION;
     }
 
     /**
