@@ -35,7 +35,7 @@ class AccessToken
      * @param int $expires_in
      * @param string $refresh_token
      */
-    public function __construct($access_token, $expires_in = 7200, $refresh_token = "", $token_type)
+    public function __construct($access_token, $expires_in = 7200, $refresh_token = "", $token_type="bearer")
     {
         $this->setAccessToken($access_token);
         $this->setExpiresIn($expires_in);
