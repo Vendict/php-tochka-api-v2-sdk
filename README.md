@@ -2,6 +2,8 @@
 
 PHP SDK для Точка банк API версия 2
 
+Happy new 2022 Year!!!
+
 [Устаревшая первая версия API](https://github.com/lee-to/php-tochka-api-sdk)
 
 ## Installation
